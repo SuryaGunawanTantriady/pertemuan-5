@@ -1,0 +1,43 @@
+import React,{Component}from'react';
+import './Input.css'
+export default class Input extends Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
+            <div className="input">
+            <input type="text"name="your_name"placeholder="Enter Your Name"onChange={(ev)=>this.props.getValues(ev.target.name,ev.target.value)}/>
+            <input type="text"name="status"placeholder="Enter Your Status"onChange={(ev)=>this.props.getValues(ev.target.name,ev.target.value)}/>
+            </div>
+        );
+    }
+}
+import React,{Component}from 'react';
+import Card from '.views/components/Card/Card';
+import Input from './views/Input/Input';
+export default class Main extends Component{
+    constructor(){
+        super();
+        this.state={
+            your_name:'',
+            status:''
+        }
+    }
+    render(){
+        return(
+            <React.Fragment>
+                <h2 style={{width:'550px',margin:'auto'.textAlign:'center',color:'#4d90fe'}}>
+                    Sistem Informasi E-biz
+                </h2>
+            <Input getValues={(name,value)}=>this.setState({[name]:value})}/>
+            <Card.Container>
+            <Card.Header>{this.state.your_name}</Card.Header>
+            <Card.body>
+            <p>{this.state.status}</p>
+            </Card.body>
+            </Card.Container>
+            </ReactFragment>
+            );
+        }
+}
