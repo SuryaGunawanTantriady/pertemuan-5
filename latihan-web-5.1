@@ -1,0 +1,21 @@
+import React,{Component}from'react';
+import './App.css';
+//FUNCTION
+ function sayHello(){
+   return "HelloWorld";
+ }
+
+ class App extends Component{
+         bilangHalo(){
+           return "HaloDunia";
+         }
+         render(){
+           return(
+             <p>sayHello:<b>{sayHello()}</b></p>
+             <p>bilang Halo :<b>{this.bilangHalo()}</b></p>
+         </>
+       )
+     }
+   }
+
+export default App
