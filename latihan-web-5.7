@@ -1,0 +1,32 @@
+import React from'react';
+import './Card.css'
+export default class Card extends React.Component{
+render(){
+    return(
+        <div className="card">
+            <div className="card-header">
+                My Card
+            </div>
+            <div className="card-body">
+                {this.props.children}
+            </div>
+
+            
+        </div>
+        );
+    }
+}
+.card{
+    background:#fff;
+    width:550px;
+    margin:auto;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:20px;
+    border-radius:4px;
+    box-shadow:1px 1px 2px #aaa;
+}
+.card-header{
+    font-weight:bold;
+    color:#365899;
+}
