@@ -1,0 +1,202 @@
+import React,{Component}from'react';
+import './css/bootstrap.min.css';
+import './App.css';
+import logo from './logo.svg';
+import Home from './views/Home/Home';
+import About from './views/About/About';
+import Help from './views/Home/Home';
+class App extends Component{
+    constructor(){
+        super();
+        this.state={
+            your_name="",
+            status:"",
+            view:'home'
+        };
+    }
+    render(){
+        const view=()=>{
+            if(this.state.view=='home')
+            return<Home name="Eden Hazard"/>
+        else if (this.state.view=='about')
+            return<About/>
+        else if (this.state.view=='help')
+            return<Help/>    
+        }
+    }
+    return(
+        <div>
+        <nav className="navbar navbar-expand-sm bg-dark navbar-dark ">
+        <ul className="navbar-nav">
+        <li className="nav-item">
+        <a onclick={()=>this.setState({view :'home'})}className="nav-link" href="#">Home</a>
+        </li>
+        <li className="nav-item">
+        <a onclick={()=>this.setState({view :'about'})}className="nav-link" href="#">About</a>
+        </li>
+        <li className="nav-item">
+        <a onclick={()=>this.setState({view :'help'})}className="nav-link" href="#">Help</a>
+        </li>
+        </ul>
+        </nav>
+
+        <View/>
+        </div>
+        );
+    }
+}
+export default App;
+
+import React,{Component}from'react';
+import './Input.css'
+export default class Input extends Component{
+    constructor(props){
+        super(props);
+        this.state={status=""}
+    }
+    render(){
+        return(
+            <div className="input">
+            <input type="text"name="your_name"placeholder="Enter Your Name"onChange={(ev)=>this.props.getValues(ev.target.name,ev.target.value)}/>
+            <input type="text"name="status"placeholder="Enter Your Status"onChange={(ev)=>this.props.getValues(ev.target.name,ev.target.value)}/>
+            </div>
+        );
+    }
+}
+.input{
+    width:550px;
+    background:#fff;
+    border-radius:4px;
+    padding:20px;
+    margin:auto;
+    margin-top:10px;
+}
+
+.input input{
+    width:530px;
+    border-radius:4px;
+    border:1px solid #eee;
+    padding:8px;
+}
+
+import { Body, Container, Header } from "./styles/card";
+
+export default function Card({ children, ...restProps }) {
+  return <Container {...restProps}>{children}</Container>;
+}
+
+Card.Header = function CardHeader({ children, ...restProps }) {
+  return <Header {...restProps}>{children}</Header>;
+};
+
+Card.Body = function CardBody({ children, ...restProps }) {
+  return <Body {...restProps}>{children}</Body>;
+};
+
+import styled from "styled-components";
+export const Container = {styled.div`
+  background: #fff;
+  width: 550px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px #aaa;
+`;
+}
+export const Header = {styled.header`
+  font-weight: bold;
+  color: #4d90fe;
+  font-size: 20px;
+`;
+}
+export const Body = {styled.body`
+  font-size: 18px;
+`;
+}
+import React from "react";
+
+const title = () => {
+  return (
+    <h2
+      style={{
+        width: "550px",
+        margin: "auto",
+        marginTop: "10px",
+        textAlign: "center",
+        color: "#4d90fe",
+      }}
+    >
+      Sistem Informasi E-biz
+    </h2>
+  );
+};
+
+class Header extends React.Component {
+  render() {
+    return <div>{title()}</div>;
+  }
+}
+
+export default Header;
+
+import React,{Component}from 'react';
+import Card from '.views/components/Card/Card';
+import Input from './views/Input/Input';
+import Header from './views/Header/Header'
+export default class Main extends Component{
+    constructor(){
+        super();
+        this.state={
+            your_name:'',
+            status:''
+        }
+    }
+render() {
+    return (
+      <React.Fragment>
+        <Header />
+        <Card>
+          <div>
+              {/* // disni kita import Input dari Input.js */}
+            <Input
+              getValues={(name, value) => this.setState({ [name]: value })}
+            />
+          </div>
+        </Card>
+
+        <Card>
+          <Card.Header>{this.state.your_name}</Card.Header>
+          <Card.Body>
+            <p>{this.state.status}</p>
+          </Card.Body>
+        </Card>
+      </React.Fragment>
+    );
+  }
+}
+
+import React from'react';
+
+export default class About extends React.Component{
+    render(){
+        return(
+        <div>
+            Component About
+        </div>
+        )
+    }
+} 
+
+import React from'react';
+
+export default class Help extends React.Component{
+    render(){
+        return(
+        <div>
+            Component Help
+        </div>
+        )
+    }
+} 
